@@ -9,11 +9,11 @@
 # Montando um modelinho de regressão hipotético...
 # Vamos ver se dá pra confiar na estimação
 
-X = rnorm(100)             #gera dados aleatórios
-epsilon = rnorm(100)       #gera dados aleatórios
+X = rnorm(100)      #gera dados aleatórios
+e = rnorm(100)      #gera dados aleatórios
 
-Y = 2 + 1.75*X + epsilon # Montamos o modelo com os coeficientes reais
-hist(Y)                  #plota um histograma para verificar a distribuição de Y
+Y = 2 + 1.75*X + e  # Montamos o modelo com os coeficientes reais
+hist(Y)             #plota um histograma para verificar a distribuição de Y
 
 reg = lm(Y~X)       #monta o modelo
 summary(reg)        #exibe os resultados do modelo
