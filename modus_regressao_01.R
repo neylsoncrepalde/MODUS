@@ -22,9 +22,13 @@ confint(reg)        #exibe o intervalo de confiança
 
 #### Funcionou?
 
+# plotando a curva de regressão
+plot(X,Y, pch = 19)                      #plota o diagrama de dispersão
+abline(reg = reg, lwd = 2, col = "red")  #plota a reta
+
 ########################################################
 # Setando o diretório de trabalho
-setwd('~/Documentos/Neylson Crepalde/Doutorado/MODUS')
+setwd('~/MODUS_regressao')
 # Lista os arquivos existentes no diretório
 list.files()
 
