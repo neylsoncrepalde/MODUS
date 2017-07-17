@@ -6,6 +6,23 @@
 
 #### AULA 1
 
+# Montando um modelinho de regressão hipotético...
+# Vamos ver se dá pra confiar na estimação
+
+X = rnorm(100)             #gera dados aleatórios
+epsilon = rnorm(100)       #gera dados aleatórios
+
+Y = 2 + 1.75*X + epsilon # Montamos o modelo com os coeficientes reais
+hist(Y)                  #plota um histograma para verificar a distribuição de Y
+
+reg = lm(Y~X)       #monta o modelo
+summary(reg)        #exibe os resultados do modelo
+coef(reg)           #exibe só os coeficientes
+confint(reg)        #exibe o intervalo de confiança
+
+#### Funcionou?
+
+########################################################
 # Setando o diretório de trabalho
 setwd('~/Documentos/Neylson Crepalde/Doutorado/MODUS')
 # Lista os arquivos existentes no diretório
