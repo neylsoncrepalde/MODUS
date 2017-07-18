@@ -39,7 +39,7 @@ library(ggplot2)
 library(descr)
 
 # Lê o banco de dados
-pnad = read.spss("PNAD96_30a50_novo3.sav", to.data.frame = T)
+pnad = read.spss("PNAD96_30a50_novo4.sav", to.data.frame = T)
 
 names(pnad)  #nomes das variáveis
 head(pnad)   #primeiros casos
