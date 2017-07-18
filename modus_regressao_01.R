@@ -49,5 +49,22 @@ str(pnad)    #estrutura do objeto
 ggplot(pnad, aes(x=lnrenda))+geom_histogram()
 
 
+##########
+# Regressão
 
+# analisando a variável dependente
+summary(pnad$anosesco)
+sd(pnad$anosesco)
+
+# Montando a regressão
+reg = lm(anosesco~escmãe, data=pnad)
+
+#Anova e resultados
+anova(reg)
+summary(reg)
+
+# gráficos de avaliação
+par(mfrow=c(2,2))
+plot(reg)
+par(mfrow=c(1,1))
 
