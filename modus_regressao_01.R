@@ -36,7 +36,6 @@ list.files()
 # Carregando os pacotes necessários
 library(foreign)
 library(ggplot2)
-library(descr)
 
 # Lê o banco de dados
 pnad = read.spss("PNAD2014_30a50_novo4.sav", to.data.frame = T)
@@ -44,12 +43,13 @@ pnad = read.spss("PNAD2014_30a50_novo4.sav", to.data.frame = T)
 names(pnad)  #nomes das variáveis
 head(pnad)   #primeiros casos
 str(pnad)    #estrutura do objeto
+View(pnad)   #visualiza o banco de dados
 
 # plotando a dispersão do log da renda
 ggplot(pnad, aes(x=lnrenda))+geom_histogram()
 
 
-##########
+############
 # Regressão
 
 # analisando a variável dependente
@@ -62,9 +62,16 @@ reg = lm(anosesco~escmãe, data=pnad)
 #Anova e resultados
 anova(reg)
 summary(reg)
+confint(reg)   #intervalo de confiança a 95%
+confint(reg, level = .99)  #intervalo de confiança a 99%
 
+plot(pnad$escmãe, pnad$anosesco)
+abline(reg=reg, lwd=2, col="red")
+
+ggplot(pnad, aes(x=escmãe, y=anosesco))+
+  geom_point()+stat_smooth(method = "lm")
+mean(pnad$anosesco)
 # gráficos de avaliação
 par(mfrow=c(2,2))
 plot(reg)
 par(mfrow=c(1,1))
-
