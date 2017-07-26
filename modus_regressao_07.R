@@ -71,6 +71,35 @@ abline(a=intercepto+coef(modelo)[6], b=slope, lwd=1, col="yellow")
 ggplot(pnad96, aes(x=iseipai, y=anosesco))+geom_point()+
   stat_smooth(aes(col=região), method="lm", se=FALSE)
 
+##########################################################
+#### TERMOS DE INTERAÇÃO
+
+# Criando uma variável dummy NORDESTE
+pnad96$nordeste <- ifelse(pnad96$região=="Nordeste", 1, 0)
+modelo2 = lm(anosesco~iseipai+nordeste, data=pnad96)
+
+# Plotando os efeitos
+ggplot(pnad96, aes(x=iseipai, y=anosesco))+geom_point()+
+  stat_smooth(aes(col=factor(nordeste)), method="lm")
+##############################
+# Regressão com termo de interação 
+
+r1 = lm(anosesco~iseipai+nordeste, pnad96) # sem interação
+r2 = lm(anosesco~iseipai*nordeste, pnad96) # COM interação
+summary(r1)
+summary(r2)
+
+####################
+
+#Y = lnrenda
+#X = anosesco, raçabin
+
+#Montando o gráfico do modelo
+ggplot(pnad96, aes(x=anosesco, y=lnrenda))+geom_point()+
+  stat_smooth(aes(col=raçabin), method="lm")+
+  theme(legend.position = "bottom")
+
+
 
 
 
