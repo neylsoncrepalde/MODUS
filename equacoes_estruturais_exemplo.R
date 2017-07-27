@@ -58,14 +58,13 @@ pnad96 = read.spss("PNAD96_25a60_Modus.sav", to.data.frame = T)
 
 modelo = '
 #variáveis latentes
-DSE =~ iseipai + anosesco
+DSE =~ isei88 + lnrenda
 
 #regressões
-lnrenda ~ DSE
-isei88 ~ DSE
+DSE ~ iseipai + anosesco
 anosesco ~ iseipai
 '
 
 fit = sem(modelo, data=pnad96)
 summary(fit)
-semPaths(fit, what = "est", layout = "tree", fade=F)
+semPaths(fit, what = "est", layout = "circle", fade=F)
