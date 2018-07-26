@@ -67,4 +67,6 @@ anosesco ~ iseipai
 
 fit = sem(modelo, data=pnad96)
 summary(fit)
-semPaths(fit, what = "est", layout = "circle", fade=F)
+semPaths(fit, what = "est", layout = "tree", fade=F,
+         sizeMan = 10, sizeLat = 10,
+         edge.label.cex = 1.5)
